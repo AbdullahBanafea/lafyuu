@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lafyuu/screens/register.dart';
-import 'package:lafyuu/screens/slider.dart';
+import 'package:lafyuu/screensSwitcher.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -67,10 +67,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const SliderScreen()),
+                          builder: (context) => ScreensSwitcher()),
                     );
                   },
                   style: ElevatedButton.styleFrom(

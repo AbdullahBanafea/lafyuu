@@ -3,14 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SliderScreen extends StatefulWidget {
-  const SliderScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<SliderScreen> createState() => _SliderScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _SliderScreenState extends State<SliderScreen> {
+class _HomePageState extends State<HomePage> {
   final controller = CarouselController();
   int activeIndex = 0;
   final assetImages = [
@@ -20,89 +20,38 @@ class _SliderScreenState extends State<SliderScreen> {
     'assets/images/Promotion Image.png',
     'assets/images/Promotion Image.png',
   ];
-  final icons = [
-    'assets/icons/shirt.svg',
-    'assets/icons/dress.svg',
-    'assets/icons/man bag.svg',
-    'assets/icons/woman bag.svg',
-    'assets/icons/man shoes.svg',
-    'assets/icons/woman shoes.svg',
-    'assets/icons/man pants.svg',
-    'assets/icons/woman pants.svg',
-    'assets/icons/skirt.svg',
-    'assets/icons/Tshirt.svg',
-    'assets/icons/woman tshirt.svg',
-    'assets/icons/man underwear.svg',
-    'assets/icons/bikini.svg',
-  ];
-  final iconsDescrep = [
-    'shirt',
-    'dress',
-    'Man Work\nEquipment',
-    'woman bag',
-    'man shoes',
-    'woman shoes',
-    'man pants',
-    'woman pants',
-    'skirt',
-    'Tshirt',
-    'woman tshirt',
-    'man underwear',
-    'bikini',
+  final List<Categoty> icons = [
+    Categoty('shirt', 'assets/icons/shirt.svg'),
+    Categoty('dress', 'assets/icons/dress.svg'),
+    Categoty('Man Work Equipment', 'assets/icons/man bag.svg'),
+    Categoty('woman bag', 'assets/icons/woman bag.svg'),
+    Categoty('man shoes', 'assets/icons/man shoes.svg'),
+    Categoty('woman shoes', 'assets/icons/woman shoes.svg'),
+    Categoty('man pants', 'assets/icons/man pants.svg'),
+    Categoty('woman pants', 'assets/icons/woman pants.svg'),
+    Categoty('skirt', 'assets/icons/skirt.svg'),
+    Categoty('T-shirt', 'assets/icons/Tshirt.svg'),
+    Categoty('woman T-shirt', 'assets/icons/woman tshirt.svg'),
+    Categoty('man underwear', 'assets/icons/man underwear.svg'),
+    Categoty('bikini', 'assets/icons/bikini.svg'),
   ];
 
-  final flashSaleProducts = [
-    'assets/flashSaleImages/image 46.png',
-    'assets/flashSaleImages/image 47.png',
-    'assets/flashSaleImages/image 48.png',
-    'assets/flashSaleImages/image 49.png',
-    'assets/flashSaleImages/image 52.png',
-    'assets/flashSaleImages/image 53.png',
-    'assets/flashSaleImages/image 54.png',
-    'assets/flashSaleImages/image 55.png',
+  final List<Categoty> products = [
+    Categoty('FS - QUILTED MAXI CROS...', 'assets/flashSaleImages/image 46.png'),
+    Categoty('FS - Nike Air Max 270 React...', 'assets/flashSaleImages/image 47.png'),
+    Categoty('FS - QUILTED MAXI CROS...', 'assets/flashSaleImages/image 48.png'),
+    Categoty('FS - Nike Air Max 270 React...', 'assets/flashSaleImages/image 49.png'),
+    Categoty('FS - Nike Air Max 270 React...', 'assets/flashSaleImages/image 52.png'),
+    Categoty('FS - QUILTED MAXI CROS...', 'assets/flashSaleImages/image 53.png'),
+    Categoty('FS - Nike Air Max 270 React...', 'assets/flashSaleImages/image 54.png'),
+    Categoty('FS - Nike Air Max 270 React...', 'assets/flashSaleImages/image 55.png'),
   ];
 
-  final flashSaleProductsDescrep = [
-    'FS - QUILTED MAXI CROS...',
-    'FS - Nike Air Max 270 React...',
-    'FS - QUILTED MAXI CROS...',
-    'FS - Nike Air Max 270 React...',
-    'FS - Nike Air Max 270 React...',
-    'FS - QUILTED MAXI CROS...',
-    'FS - Nike Air Max 270 React...',
-    'FS - Nike Air Max 270 React...',
-  ];
-
-  final megaSaleProducts = [
-    'assets/flashSaleImages/image 52.png',
-    'assets/flashSaleImages/image 53.png',
-    'assets/flashSaleImages/image 54.png',
-    'assets/flashSaleImages/image 55.png',
-    'assets/flashSaleImages/image 46.png',
-    'assets/flashSaleImages/image 47.png',
-    'assets/flashSaleImages/image 48.png',
-    'assets/flashSaleImages/image 49.png',
-  ];
-
-  final megaSaleProductsDescrep = [
-    'FS - Nike Air Max 270 React...',
-    'FS - Nike Air Max 270 React...',
-    'FS - QUILTED MAXI CROS...',
-    'FS - Nike Air Max 270 React...',
-    'FS - QUILTED MAXI CROS...',
-    'FS - Nike Air Max 270 React...',
-    'FS - Nike Air Max 270 React...',
-    'FS - QUILTED MAXI CROS...',
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
-            child: Center(
-          child: ListView(
+    return Center(
+              child: ListView(
             children: [
               Column(
                 children: [
@@ -122,7 +71,7 @@ class _SliderScreenState extends State<SliderScreen> {
                                 prefixIcon: Icon(Icons.search_outlined,
                                     color: Color(0xff6dceff)),
                                 label: (Text(
-                                  'Search Proudct',
+                                  'Search Product',
                                   style: TextStyle(
                                       fontSize: 12,
                                       color: Color(0xff9098B1),
@@ -183,14 +132,13 @@ class _SliderScreenState extends State<SliderScreen> {
                   ),
                   SizedBox(height: 15),
                   //Icons slider
-                  Container(
+                  SizedBox(
                     height: 122,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: icons.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final icon = icons[index];
-                        return buildIcon(icon, index);
+                        return buildIcon(icons[index].name, icons[index].image);
                       },
                     ),
                   ),
@@ -225,10 +173,9 @@ class _SliderScreenState extends State<SliderScreen> {
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: flashSaleProducts.length,
+                      itemCount: products.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final flashSale = flashSaleProducts[index];
-                        return buildFlashSale(flashSale, index);
+                        return buildFlashSale(products[index].name, products[index].image);
                       },
                     ),
                   ),
@@ -264,17 +211,15 @@ class _SliderScreenState extends State<SliderScreen> {
                     margin: EdgeInsets.symmetric(horizontal: 10),
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: megaSaleProducts.length,
+                      itemCount: products.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final megaSale = megaSaleProducts[index];
-                        return buildFlashSale(megaSale, index);
+                        return buildFlashSale(products[index].name, products[index].image);
                       },
                     ),
                   ),
                   SizedBox(
                     height: 5,
                   ),
-                  //Recomended Product
                   Stack(
                     children: [
                       Container(
@@ -291,7 +236,7 @@ class _SliderScreenState extends State<SliderScreen> {
                         ),
                       ),
                       Positioned(
-                        child: Container(
+                        child: SizedBox(
                           width: 172,
                           height: 72,
                           child: Text(
@@ -307,7 +252,7 @@ class _SliderScreenState extends State<SliderScreen> {
                         left: 30,
                       ),
                       Positioned(
-                        child: Container(
+                        child: SizedBox(
                           height: 22,
                           child: Text(
                             'We recommend the best for you',
@@ -333,10 +278,9 @@ class _SliderScreenState extends State<SliderScreen> {
                       physics:
                           NeverScrollableScrollPhysics(), // to disable GridView's scrolling
                       shrinkWrap: true, // You won't see infinite size error
-                      itemCount: megaSaleProducts.length,
+                      itemCount: products.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final megaSale = megaSaleProducts[index];
-                        return buildGridView(megaSale, index);
+                        return buildGridView(products[index].name, products[index].image);
                       },
                     ),
                   )
@@ -344,8 +288,6 @@ class _SliderScreenState extends State<SliderScreen> {
               ),
             ],
           ),
-        )),
-      ),
     );
   }
 
@@ -360,7 +302,7 @@ class _SliderScreenState extends State<SliderScreen> {
               fit: BoxFit.cover,
             ),
             Positioned(
-              child: Container(
+              child: SizedBox(
                 width: 280,
                 child: Text(
                   'Super Flash Sale 50% off',
@@ -374,19 +316,6 @@ class _SliderScreenState extends State<SliderScreen> {
               top: 37,
               left: 30,
             ),
-            // Positioned(
-            //   child: Container(
-            //     child: Text(
-            //       '50% off',
-            //       style: TextStyle(
-            //           color: Colors.white,
-            //           fontSize: 33,
-            //           fontWeight: FontWeight.bold),
-            //     ),
-            //   ),
-            //   top: 80,
-            //   left: 30,
-            // ),
             Positioned(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -466,7 +395,7 @@ class _SliderScreenState extends State<SliderScreen> {
 
   void animateToSlide(int index) => controller.animateToPage(index);
 
-  Widget buildIcon(String icon, int index) => Padding(
+  Widget buildIcon(String name, String image) => Padding(
         padding: const EdgeInsets.all(5.0),
         child: Column(
           children: [
@@ -480,7 +409,7 @@ class _SliderScreenState extends State<SliderScreen> {
                 child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: SvgPicture.asset(
-                      icon,
+                      image,
                       height: 24,
                       width: 24,
                     )),
@@ -489,13 +418,13 @@ class _SliderScreenState extends State<SliderScreen> {
             SizedBox(
               height: 7,
             ),
-            Text(iconsDescrep[index],
-                style: TextStyle(color: Color(0xff9098B1))),
+            Text(name,
+                style: TextStyle(color: Color(0xff9098B1)),textAlign: TextAlign.justify),
           ],
         ),
       );
 
-  Widget buildFlashSale(String flashSale, int index) => Padding(
+  Widget buildFlashSale(String name, String image) => Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
           height: 238,
@@ -515,17 +444,17 @@ class _SliderScreenState extends State<SliderScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   height: 115,
                   width: 115,
-                  child: Image.asset(flashSale),
+                  child: Image.asset(image),
                 ),
                 SizedBox(
                   height: 7,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: Text(flashSaleProductsDescrep[index],
+                  child: Text(name,
                       style: TextStyle(
                           color: Color(0xff223263),
                           fontWeight: FontWeight.bold,
@@ -571,7 +500,7 @@ class _SliderScreenState extends State<SliderScreen> {
         ),
       );
 
-  Widget buildMegaSale(String megaSale, int index) => Padding(
+  Widget buildMegaSale(String name, String image) => Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
           height: 238,
@@ -591,17 +520,17 @@ class _SliderScreenState extends State<SliderScreen> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   height: 115,
                   width: 115,
-                  child: Image.asset(megaSale),
+                  child: Image.asset(image),
                 ),
                 SizedBox(
                   height: 7,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: Text(megaSaleProductsDescrep[index],
+                  child: Text(name,
                       style: TextStyle(
                           color: Color(0xff223263),
                           fontWeight: FontWeight.bold,
@@ -647,7 +576,7 @@ class _SliderScreenState extends State<SliderScreen> {
         ),
       );
 
-  Widget buildGridView(String flashSale, int index) => Padding(
+  Widget buildGridView(String name, String image) => Padding(
         padding: const EdgeInsets.all(5.0),
         child: Container(
           height: 238,
@@ -667,17 +596,17 @@ class _SliderScreenState extends State<SliderScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                Container(
+                SizedBox(
                   height: 140,
                   width: 140,
-                  child: Image.asset(flashSale),
+                  child: Image.asset(image),
                 ),
                 SizedBox(
                   height: 7,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: Text(flashSaleProductsDescrep[index],
+                  child: Text(name,
                       style: TextStyle(
                           color: Color(0xff223263),
                           fontWeight: FontWeight.bold,
@@ -733,4 +662,12 @@ class _SliderScreenState extends State<SliderScreen> {
           ),
         ),
       );
+}
+
+
+class Categoty {
+  final String name;
+  final String image;
+
+  Categoty(this.name, this.image);
 }

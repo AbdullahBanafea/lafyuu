@@ -12,6 +12,10 @@ class _ScreensSwitcherState extends State<ScreensSwitcher> {
   int selectedPage = 0;
   List<Widget> screens = [
     HomePage(),
+    Text('1'),
+    Text('2'),
+    Text('3'),
+    Text('4'),
   ];
 
   @override
